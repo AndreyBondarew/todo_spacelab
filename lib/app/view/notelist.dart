@@ -50,7 +50,7 @@ class _NoteScreenState extends State<NoteScreen> {
               padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
               child: Container(
                 height: 1.0,
-                color: Colors.grey.shade400,
+                color: Colors.grey.shade500,
               ),
             ),
             Flexible(child: _buildNotesList()),
