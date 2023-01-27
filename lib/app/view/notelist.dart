@@ -47,10 +47,10 @@ class _NoteScreenState extends State<NoteScreen> {
           children: [
             _inputForm(),
             Padding(
-              padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+              padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
               child: Container(
-                height: 2.0,
-                color: Theme.of(context).dividerColor,
+                height: 1.0,
+                color: Colors.grey.shade400,
               ),
             ),
             Flexible(child: _buildNotesList()),
