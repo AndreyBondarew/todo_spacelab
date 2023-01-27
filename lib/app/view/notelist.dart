@@ -50,7 +50,7 @@ class _NoteScreenState extends State<NoteScreen> {
               padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
               child: Container(
                 height: 1.0,
-                color: Colors.grey.shade500,
+                color: Theme.of(context).primaryColor, //Colors.grey.shade500,
               ),
             ),
             Flexible(child: _buildNotesList()),
@@ -64,16 +64,37 @@ class _NoteScreenState extends State<NoteScreen> {
     return Row(
       children: [
         Flexible(
-          child: TextField(
-            controller: _editingController,
-            onChanged: (val) => _setModifier(),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 4, right: 4),
+            child: TextField(
+              decoration: const InputDecoration(
+                //helperText: 'Add name for new task',
+                hintText: 'add new task...',
+                hintStyle: TextStyle(fontWeight: FontWeight.w100),
+                /*border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(10)),*/
+              ),
+              autofocus: true,
+              controller: _editingController,
+              onChanged: (val) => _setModifier(),
+              textInputAction: TextInputAction.done,
+              onSubmitted: (val) {
+                if (val.isNotEmpty) {
+                  _saveNote();
+                }
+              },
+            ),
           ),
         ),
         IconButton(
           onPressed: _isButtonDisabled ? null : _saveNote,
           icon: Icon(
-            Icons.add,
+            Icons.add_circle,
             color: _isButtonDisabled ? Theme.of(context).disabledColor : Colors.green,
+            size: 36,
           ),
         ),
       ],
